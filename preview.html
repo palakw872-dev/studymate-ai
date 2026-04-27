@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StudyMate AI</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: white;
+      text-align: center;
+    }
+
+    .light-mode {
+      background: white;
+      color: black;
+    }
+
+    header {
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    #chatbox {
+      width: 80%;
+      max-width: 500px;
+      height: 200px;
+      margin: 20px auto;
+      border: 1px solid gray;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    input {
+      padding: 10px;
+      width: 60%;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>📚 StudyMate AI</header>
+
+<button onclick="toggleMode()">Toggle Light/Dark</button>
+
+<div id="chatbox"></div>
+
+<input type="text" id="userInput" placeholder="Ask something...">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("light-mode");
+}
+
+function sendMessage() {
+  let input = document.getElementById("userInput").value;
+  let chatbox = document.getElementById("chatbox");
+
+  chatbox.innerHTML += "<p><b>You:</b> " + input + "</p>";
+
+  let reply = "I am StudyMate AI 🤖 (demo).";
+
+  if (input.toLowerCase().includes("hello")) {
+    reply = "Hello! How can I help you?";
+  }
+
+  if (input.toLowerCase().includes("exam")) {
+    reply = "Revise NCERT + practice questions = full marks 💯";
+  }
+
+  chatbox.innerHTML += "<p><b>AI:</b> " + reply + "</p>";
+
+  document.getElementById("userInput").value = "";
+}
+</script>
+
+</body>
+</html>
