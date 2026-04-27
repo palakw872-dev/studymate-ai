@@ -1,89 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>StudyMate AI</title>
   <style>
-    body {
-      font-family: Arial;
-      margin: 0;
-      padding: 0;
-      background: #111;
-      color: white;
-      text-align: center;
-    }
-
-    .light-mode {
-      background: white;
-      color: black;
-    }
-
-    header {
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin: 10px;
-      border: none;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-
-    #chatbox {
-      width: 80%;
-      max-width: 500px;
-      height: 200px;
-      margin: 20px auto;
-      border: 1px solid gray;
-      padding: 10px;
-      overflow-y: auto;
-    }
-
-    input {
-      padding: 10px;
-      width: 60%;
-    }
+    body { font-family: Arial; background: #111; color: white; text-align: center; }
+    .light { background: white; color: black; }
+    button { padding: 10px; margin: 10px; }
+    #chat { border: 1px solid gray; height: 200px; width: 80%; margin: auto; overflow: auto; }
   </style>
 </head>
-
 <body>
 
-<header>📚 StudyMate AI</header>
+<h1>📚 StudyMate AI</h1>
 
-<button onclick="toggleMode()">Toggle Light/Dark</button>
+<button onclick="toggle()">Light/Dark</button>
 
-<div id="chatbox"></div>
+<div id="chat"></div>
 
-<input type="text" id="userInput" placeholder="Ask something...">
-<button onclick="sendMessage()">Send</button>
+<input id="input" placeholder="Ask something...">
+<button onclick="send()">Send</button>
 
 <script>
-function toggleMode() {
-  document.body.classList.toggle("light-mode");
+function toggle() {
+  document.body.classList.toggle("light");
 }
 
-function sendMessage() {
-  let input = document.getElementById("userInput").value;
-  let chatbox = document.getElementById("chatbox");
+function send() {
+  let input = document.getElementById("input").value;
+  let chat = document.getElementById("chat");
 
-  chatbox.innerHTML += "<p><b>You:</b> " + input + "</p>";
+  chat.innerHTML += "<p><b>You:</b> " + input + "</p>";
 
-  let reply = "I am StudyMate AI 🤖 (demo).";
+  let reply = "I am your AI 🤖";
 
-  if (input.toLowerCase().includes("hello")) {
-    reply = "Hello! How can I help you?";
+  if (input.includes("exam")) {
+    reply = "Revise NCERT + practice = 40/40 💯";
   }
 
-  if (input.toLowerCase().includes("exam")) {
-    reply = "Revise NCERT + practice questions = full marks 💯";
-  }
+  chat.innerHTML += "<p><b>AI:</b> " + reply + "</p>";
 
-  chatbox.innerHTML += "<p><b>AI:</b> " + reply + "</p>";
-
-  document.getElementById("userInput").value = "";
+  document.getElementById("input").value = "";
 }
 </script>
 
